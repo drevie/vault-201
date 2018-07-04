@@ -1,5 +1,7 @@
 import React from 'react';
-import { FancyIcon } from './FancyIcon';
+import CloudDoneIcon from '@material-ui/icons/CloudDone';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import PublicIcon from '@material-ui/icons/Public';
 
 class FancyIconRow extends React.Component {
   constructor(props) {
@@ -9,11 +11,12 @@ class FancyIconRow extends React.Component {
 
   render() {
     return (
-      <div>
-        {
-          ['fa-cog', 'fa-cap', 'fa-iron', 'fa-smart',]
-            .map(icon => (<FancyIcon iconClass={icon} />))
-        }
+      <div
+        className="flex-row"
+      >
+        <CloudDoneIcon className="item" />
+        <MonetizationOnIcon className="item" />
+        <PublicIcon className="item" />
       </div>
     )
   }
