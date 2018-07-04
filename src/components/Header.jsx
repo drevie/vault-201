@@ -50,18 +50,23 @@ class Header extends React.Component {
     );
 
 
-    render() {
-        return (
-            <div>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton>
+    /*
+
+                            <IconButton>
                             <MenuIcon onClick={() => {
                                 this.setState({
                                     renderAppDrawer: true,
                                 });
                             }} />
                         </IconButton>
+    */
+
+    render() {
+        return (
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+
                     </Toolbar>
                 </AppBar>
 
@@ -69,7 +74,7 @@ class Header extends React.Component {
 
 
 
-                <div className="flex-row">
+                <div className="flex-row avatar-row">
                     <Avatar src={logo} className={this.props.classes.avatar} />
                 </div>
                 <div className="flex-row">
