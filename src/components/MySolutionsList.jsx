@@ -11,6 +11,25 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import * as text from '../static/text';
+import aws from '../static/images/aws.png';
+
+
+const styles = theme => ({
+  media: {
+    height: 125,
+    paddingTop: '56.25%', // 16:9
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    marginLeft: 'auto',
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+});
 
 class MySolutions extends React.Component {
 
@@ -24,13 +43,13 @@ class MySolutions extends React.Component {
       <CardContent>
         <div>
           <Typography variant="title">
-            Human
-                    </Typography>
+            Cutting Edge Development
+            </Typography>
         </div>
 
         <div>
           <Typography variant="body1">
-            {text.HUMAN_BIO}
+            {text.CUTTING_EDGE_TECH}
           </Typography>
         </div>
       </CardContent>
@@ -57,13 +76,13 @@ class MySolutions extends React.Component {
       <CardContent>
         <div>
           <Typography variant="title">
-            Human
+            Cost Effective
                     </Typography>
         </div>
 
         <div>
           <Typography variant="body1">
-            {text.HUMAN_BIO}
+            {text.COST_EFFECTIVE}
           </Typography>
         </div>
       </CardContent>
@@ -90,13 +109,13 @@ class MySolutions extends React.Component {
       <CardContent>
         <div>
           <Typography variant="title">
-            Human
+            Global Reach
                     </Typography>
         </div>
 
         <div>
           <Typography variant="body1">
-            {text.HUMAN_BIO}
+            {text.GLOBAL_REACH}
           </Typography>
         </div>
       </CardContent>
@@ -132,4 +151,4 @@ class MySolutions extends React.Component {
   }
 }
 
-export default MySolutions;
+export default withStyles(styles)(MySolutions);

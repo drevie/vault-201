@@ -1,28 +1,8 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import BioCardList from './BioCardList';
-import CloudDoneIcon from '@material-ui/icons/CloudDone';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import PublicIcon from '@material-ui/icons/Public';
 import MySolutions from './MySolutionsList';
-
-const personalSolutionCards = [
-    {
-        icon: (<CloudDoneIcon className="card-icon" color="primary" />),
-        title: "AWS Cloud Hosted",
-        text: "Leveraging the latest in web technolgies"
-    },
-    {
-        icon: (<MonetizationOnIcon className="card-icon" color="primary" />),
-        title: "Cost Efficient",
-        text: "Competetive pricing"
-    },
-    {
-        icon: (<PublicIcon className="card-icon" color="primary" />),
-        title: "Global React",
-        text: "Expand the reach of your business"
-    },
-]
+import * as text from '../static/text';
 
 class Body extends React.Component {
     renderAboutMe = () => (
@@ -35,6 +15,7 @@ class Body extends React.Component {
     renderMySolutions = () => (
         <div className="personal-solution">
             <Typography align="center" variant="headline">Personal Solutions</Typography>
+            <Typography align="left" variant="body1">{text.PERSONAL_SOLUTIONS_DETAIL}</Typography>
             <MySolutions />
         </div>
     );
@@ -51,8 +32,8 @@ class Body extends React.Component {
         return (
             <div className="body-container">
                 <div className="body">
-                    {this.renderAboutMe()}
                     {this.renderMySolutions()}
+                    {this.renderAboutMe()}
                     {this.renderFooter()}
                 </div>
             </div>

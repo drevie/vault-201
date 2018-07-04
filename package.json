@@ -45,7 +45,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy": "aws s3 sync build/ s3://vault-201"
   },
   "devDependencies": {
     "css-loader": "^0.28.7",
@@ -56,6 +57,7 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "node-sass": "^4.9.0",
+    "react-social-icons": "^3.0.0",
     "sass-loader": "^7.0.3",
     "scss-loader": "0.0.1",
     "style-loader": "^0.19.1"

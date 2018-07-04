@@ -41,10 +41,11 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
-const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  ? // Making sure that the publicPath goes back to to build folder.
-  { publicPath: Array(cssFilename.split('/').length).join('../') }
-  : {};
+const extractTextPluginOptions = shouldUseRelativeAssetPaths ? // Making sure that the publicPath goes back to to build folder.
+  {
+    publicPath: Array(cssFilename.split('/').length).join('../')
+  } :
+  {};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -70,8 +71,8 @@ module.exports = {
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path
-        .relative(paths.appSrc, info.absoluteResourcePath)
-        .replace(/\\/g, '/'),
+      .relative(paths.appSrc, info.absoluteResourcePath)
+      .replace(/\\/g, '/'),
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -116,16 +117,14 @@ module.exports = {
       {
         test: /\.(js|jsx|mjs)$/,
         enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
+        use: [{
+          options: {
+            formatter: eslintFormatter,
+            eslintPath: require.resolve('eslint'),
 
-            },
-            loader: require.resolve('eslint-loader'),
           },
-        ],
+          loader: require.resolve('eslint-loader'),
+        }, ],
         include: paths.appSrc,
       },
       {
@@ -168,16 +167,14 @@ module.exports = {
           {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
-              Object.assign(
-                {
+              Object.assign({
                   fallback: {
                     loader: require.resolve('style-loader'),
                     options: {
                       hmr: false,
                     },
                   },
-                  use: [
-                    {
+                  use: [{
                       loader: require.resolve('css-loader'),
                       options: {
                         importLoaders: 1,
@@ -211,6 +208,16 @@ module.exports = {
               )
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          // SCSS Loader
+          {
+            test: /\.s[ac]ss$/,
+            include: paths.appSrc,
+            loaders: [
+              require.resolve('style-loader'),
+              require.resolve('css-loader'),
+              require.resolve('sass-loader')
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

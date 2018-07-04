@@ -1,12 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import InfoCard from './InfoCard';
 import { Card, Typography, IconButton, Collapse } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PersonIcon from '@material-ui/icons/Person';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import SchoolIcon from '@material-ui/icons/School';
 import DomainIcon from '@material-ui/icons/Domain';
 import CardActions from '@material-ui/core/CardActions';
@@ -49,7 +46,7 @@ class BioCardList extends React.Component {
             <CardContent>
                 <div>
                     <Typography variant="title">
-                        Rutgers Electrical / Computer Engineering
+                        Rutgers School of Engineering Graduate
                     </Typography>
                 </div>
 

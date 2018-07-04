@@ -3,6 +3,7 @@ import { Avatar, AppBar, Toolbar, IconButton, Drawer, Button } from '@material-u
 import MenuIcon from '@material-ui/icons/Menu'
 import logo from '../static/images/my_picture.jpg';
 import { withStyles } from '@material-ui/core/styles';
+import ContactLinks from './ContactLinks';
 
 const styles = {
     avatar: {
@@ -56,7 +57,6 @@ class Header extends React.Component {
                     <Toolbar>
                         <IconButton>
                             <MenuIcon onClick={() => {
-                                console.log("daniel revie");
                                 this.setState({
                                     renderAppDrawer: true,
                                 });
@@ -75,6 +75,7 @@ class Header extends React.Component {
                 <div className="flex-row">
                     <h3>Daniel Revie</h3>
                 </div>
+                <ContactLinks />
             </div>
         )
     }
