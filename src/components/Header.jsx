@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, AppBar, Toolbar, IconButton, Drawer, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu'
-import logo from '../images/my_picture.JPG';
+import logo from '../static/images/my_picture.jpg';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -69,15 +69,12 @@ class Header extends React.Component {
 
 
 
-                <header className="App-header">
-                    <div className="flex-row">
-                        <Avatar src={logo} className={this.props.classes.avatar} />
-                    </div>
-                    <div className="flex-row">
-                        <h3>Daniel Revie</h3>
-                    </div>
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
+                <div className="flex-row">
+                    <Avatar src={logo} className={this.props.classes.avatar} />
+                </div>
+                <div className="flex-row">
+                    <h3>Daniel Revie</h3>
+                </div>
             </div>
         )
     }
