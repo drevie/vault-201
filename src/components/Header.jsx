@@ -1,9 +1,13 @@
 import React from 'react';
-import { Avatar, AppBar, Toolbar, IconButton, Drawer, Button } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu'
+import { Avatar, AppBar, Toolbar, Drawer, Button, IconButton, } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import PhoneIcon from '@material-ui/icons/Phone';
 import logo from '../static/images/my_picture.jpg';
 import { withStyles } from '@material-ui/core/styles';
 import ContactLinks from './ContactLinks';
+import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const styles = {
     avatar: {
@@ -18,17 +22,46 @@ class Header extends React.Component {
         this.state = { renderAppDrawer: false, }
     }
 
+    redirect = (route) => {
+        switch (route) {
+            case '/':
+                this.setState({
+                    renderHome: true,
+                    renderInquiry: false,
+                    renderAppDrawer: false,
+                });
+                break;
+            case '/inquiry':
+                this.setState({
+                    renderHome: false,
+                    renderInquiry: true,
+                    renderAppDrawer: false,
+                });
+                break;
+        }
+    }
+
+    renderRedirect = () => {
+        if (this.state.renderHome) {
+            return <Redirect to="/" />
+        } else if (this.state.renderInquiry) {
+            return <Redirect to="/inquiry" />
+        }
+    }
+
     renderDrawerList = () => (
         <div>
-            <div>
-                <Button>Contact</Button>
-            </div>
-            <div>
-                <Button>LinkedIn</Button>
-            </div>
-            <div>
-                <Button>GitHub</Button>
-            </div>
+            <IconButton>
+                <HomeIcon onClick={() => {
+                    this.redirect('/')
+                }} />
+            </IconButton>
+            <IconButton>
+                <PhoneIcon onClick={() => {
+                    this.redirect('/inquiry')
+                }} />
+            </IconButton>
+            <Link to="inquiry">Inquiry</Link>
         </div>
     );
 
@@ -49,24 +82,18 @@ class Header extends React.Component {
         </div>
     );
 
-
-    /*
-
-                            <IconButton>
+    render() {
+        return (
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton>
                             <MenuIcon onClick={() => {
                                 this.setState({
                                     renderAppDrawer: true,
                                 });
                             }} />
                         </IconButton>
-    */
-
-    render() {
-        return (
-            <div>
-                <AppBar position="static">
-                    <Toolbar>
-
                     </Toolbar>
                 </AppBar>
 
@@ -81,6 +108,7 @@ class Header extends React.Component {
                     <h3>Daniel Revie</h3>
                 </div>
                 <ContactLinks />
+                {this.renderRedirect()}
             </div>
         )
     }

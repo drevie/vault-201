@@ -5,13 +5,10 @@ import CloudDoneIcon from '@material-ui/icons/CloudDone';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import PublicIcon from '@material-ui/icons/Public';
 import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames'
-import { Card, Typography, IconButton, Collapse } from '@material-ui/core';
-import CardMedia from '@material-ui/core/CardMedia';
+import { Card, Typography } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import * as text from '../static/text';
-import aws from '../static/images/aws.png';
 
 
 const styles = theme => ({

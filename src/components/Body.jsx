@@ -14,7 +14,7 @@ class Body extends React.Component {
 
     renderMySolutions = () => (
         <div className="personal-solution">
-            <Typography align="center" variant="headline">Personal Solutions</Typography>
+            <Typography align="center" variant="headline">Business Solutions</Typography>
             <Typography align="left" variant="body1">{text.PERSONAL_SOLUTIONS_DETAIL}</Typography>
             <MySolutions />
         </div>
