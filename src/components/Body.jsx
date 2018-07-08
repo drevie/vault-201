@@ -6,14 +6,14 @@ import * as text from '../static/text';
 
 class Body extends React.Component {
     renderAboutMe = () => (
-        <div className="about-me">
+        <div className="body-about-me">
             <Typography align="center" variant="headline">{'About Me'}</Typography>
             <BioCardList />
         </div>
     );
 
     renderMySolutions = () => (
-        <div className="personal-solution">
+        <div className="body-business-solutions">
             <Typography align="center" variant="headline">Business Solutions</Typography>
             <Typography align="left" variant="body1">{text.PERSONAL_SOLUTIONS_DETAIL}</Typography>
             <MySolutions />
@@ -31,13 +31,10 @@ class Body extends React.Component {
     render() {
         return (
             <div className="body-container">
-                <div className="body">
-                    {this.renderMySolutions()}
-                    {this.renderAboutMe()}
-                    {this.renderFooter()}
-                </div>
+                {this.renderMySolutions()}
+                {this.renderAboutMe()}
+                {this.renderFooter()}
             </div>
-
         );
     }
 }

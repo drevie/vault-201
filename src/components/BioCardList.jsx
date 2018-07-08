@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import * as bios from '../static/text';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
+import * as FontAwesome from 'react-icons/lib/fa'
 
 const styles = theme => ({
     media: {
@@ -121,9 +122,22 @@ class BioCardList extends React.Component {
 
                 <Collapse in={this.state.renderExtraSoftwareEngineerSection} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography>
-                            Techs
-                        </Typography>
+                        <div className="technologies-block">
+                            <div className="list">
+                                <Typography variant="subheading">Frameworks</Typography>
+                                <Typography>React</Typography>
+                                <Typography>Redux</Typography>
+                                <Typography>Spring</Typography>
+                                <Typography>Oracle 12c</Typography>
+                            </div>
+                            <div className="list">
+                                <Typography variant="subheading">Languages</Typography>
+                                <Typography>Java</Typography>
+                                <Typography>JavaScript</Typography>
+                                <Typography>TypeScript</Typography>
+                                <Typography>SQL</Typography>
+                            </div>
+                        </div>
                     </CardContent>
                 </Collapse>
 

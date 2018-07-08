@@ -8,7 +8,10 @@
     height: 100;
 }
 
-.App {}
+.App {
+    background-color: #EEEEEE;
+    min-height: calc(100vh - 48px);
+}
 
 .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -3,8 +3,12 @@ import './styles/App.scss';
 import Header from './components/Header';
 import Body from './components/Body';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { Switch, Route } from 'react-router-dom'
 import ContactForm from './components/ContactForm';
+import primary from '@material-ui/core/colors/'
+import Resume from './components/Resume';
+
 
 const theme = createMuiTheme();
 
@@ -17,7 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Body} />
             <Route path="/inquiry" component={ContactForm} />
-
+            <Route path="/resume" component={Resume} />
           </Switch>
         </div>
       </MuiThemeProvider>

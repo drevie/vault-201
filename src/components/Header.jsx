@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, AppBar, Toolbar, Drawer, Button, IconButton, } from '@material-ui/core';
+import { Avatar, AppBar, Toolbar, Drawer, Button, IconButton, ToolbarGroup } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -13,7 +13,17 @@ const styles = {
     avatar: {
         width: 120,
         height: 120,
-    }
+    },
+    root: {
+        flexGrow: 1,
+    },
+    flex: {
+        flex: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
 }
 
 class Header extends React.Component {
@@ -37,6 +47,8 @@ class Header extends React.Component {
                     renderInquiry: true,
                     renderAppDrawer: false,
                 });
+                break;
+            default:
                 break;
         }
     }
@@ -84,31 +96,42 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={`${this.props.classes.root}`}>
                 <AppBar position="static">
-                    <Toolbar>
-                        <IconButton>
-                            <MenuIcon onClick={() => {
-                                this.setState({
-                                    renderAppDrawer: true,
-                                });
-                            }} />
-                        </IconButton>
+
+                    <Toolbar className="toolbar">
+                        {/*
+                            <IconButton color="inherit" aria-label="Menu" className={this.props.classes.menuButton}>
+                                <MenuIcon onClick={() => {
+                                    this.setState({
+                                        renderAppDrawer: true,
+                                    });
+                                }} />
+                            </IconButton>
+                        */
+                        }
+                        <div>
+                            <Button color="inherit" onClick={() => { this.redirect('/') }}>Home</Button>
+                            <Button color="inherit" onClick={() => { this.redirect('/inquiry') }}>Contact</Button>
+                            <Button color="inherit">Resume</Button>
+                        </div>
                     </Toolbar>
+
                 </AppBar>
 
                 {this.renderDrawer()}
 
 
-
-                <div className="flex-row avatar-row">
-                    <Avatar src={logo} className={this.props.classes.avatar} />
+                <div className="profile-container">
+                    <div className="flex-row avatar-row">
+                        <Avatar src={logo} className={this.props.classes.avatar} />
+                    </div>
+                    <div className="flex-row">
+                        <h3>Daniel Revie</h3>
+                    </div>
+                    <ContactLinks />
+                    {this.renderRedirect()}
                 </div>
-                <div className="flex-row">
-                    <h3>Daniel Revie</h3>
-                </div>
-                <ContactLinks />
-                {this.renderRedirect()}
             </div>
         )
     }

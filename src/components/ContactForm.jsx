@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextField } from '../../node_modules/@material-ui/core';
+import { TextField, IconButton, Typography, Button } from '../../node_modules/@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-
+import SendIcon from '@material-ui/icons/Send';
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -20,6 +20,12 @@ const styles = theme => ({
     },
     menu: {
         width: 200,
+    },
+    button: {
+        margin: theme.spacing.unit,
+    },
+    extendedIcon: {
+        marginRight: theme.spacing.unit,
     },
 });
 
@@ -40,7 +46,7 @@ class ContactForm extends React.Component {
         return (
             <div>
                 <div>
-                    <h2 style={{ display: 'flex', justifyContent: 'center', }}>Inquiry</h2>
+                    <h2 style={{ display: 'flex', justifyContent: 'center', }}>Contact</h2>
                 </div>
                 <form className="contact-form-container" noValidate autoComplete="off">
                     <div className="contact-form-row">
@@ -81,6 +87,12 @@ class ContactForm extends React.Component {
                             rows={4}
                             rowsMax={10}
                         />
+                    </div>
+                    <div className="contact-form-row">
+                        <Button variant="extendedFab" color="primary" className={this.props.classes.button}>
+                            <SendIcon className={this.props.classes.extendedIcon} />
+                            Send
+                        </Button>
                     </div>
                 </form>
             </div>

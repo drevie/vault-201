@@ -1,15 +1,25 @@
 .body-container {
     justify-content: center;
     align-items: center;
-    .body {
+    .body-about-me {
+        padding-top: 25px;
         align-self: center;
         padding-left: 8%;
         padding-right: 8%;
-        .personal-solution {
-            padding-top: 50px;
+        padding-top: 50px;
+        .technologies-block {
+            display: flex;
+            justify-content: space-evenly;
+            .list {
+                max-width: 50%;
+                padding: 5px;
+            }
         }
-        .about-me {
-            padding-top: 25px;
-        }
+    }
+    .body-business-solutions {
+        align-self: center;
+        padding-left: 8%;
+        padding-right: 8%;
+        padding-top: 50px;
     }
 }
