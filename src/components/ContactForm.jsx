@@ -1,7 +1,10 @@
 import React from 'react';
-import { TextField, IconButton, Typography, Button } from '../../node_modules/@material-ui/core';
+import { TextField, IconButton, Typography, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, InputLabel, Input, FormControl } from '../../node_modules/@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
+import { sendEmail } from '../services/emailService';
+import { TextMaskCustom } from './stateless/TextMask';
+
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -32,15 +35,31 @@ const styles = theme => ({
 class ContactForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: '', email: '', phone: '', }
+        this.state = { name: '', email: '', phone: '', inquiry: '', textMask: '(1  )    -    ' }
     }
 
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
-        });
+        }, console.log(this.state));
     };
 
+
+    renderSuccessDialog = () => (
+        <Dialog
+            onClose={() => null}
+            open={this.state.openSuccessDialog}
+        >
+            <DialogTitle id="Contact Success Title">Thanks for getting in touch!</DialogTitle>
+            <DialogContent>
+                <DialogContentText>A member monitoring our email will get back to you soon.</DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={() => null}>Home</Button>
+                <Button onClick={() => null}>Close</Button>
+            </DialogActions>
+        </Dialog>
+    );
 
     renderForm() {
         return (
@@ -51,6 +70,7 @@ class ContactForm extends React.Component {
                 <form className="contact-form-container" noValidate autoComplete="off">
                     <div className="contact-form-row">
                         <TextField
+                            required
                             id="name"
                             label="Name"
                             value={this.state.name}
@@ -59,6 +79,7 @@ class ContactForm extends React.Component {
                             className={this.props.classes.textField}
                         />
                         <TextField
+                            required
                             id="email"
                             label="Email"
                             value={this.state.email}
@@ -66,17 +87,19 @@ class ContactForm extends React.Component {
                             margin="normal"
                             className={this.props.classes.textField}
                         />
-                        <TextField
-                            id="phone"
-                            label="Phone"
-                            value={this.state.phone}
-                            onChange={this.handleChange('phone')}
-                            margin="normal"
-                            className={this.props.classes.textField}
-                        />
+                        <FormControl className={this.props.classes.textField} margin="normal">
+                            <InputLabel>Phone</InputLabel>
+                            <Input
+                                value={this.state.textMask}
+                                onChange={this.handleChange('phone')}
+                                id="phone-number"
+                                inputComponent={TextMaskCustom}
+                            />
+                        </FormControl>
                     </div>
                     <div className="contact-form-row">
                         <TextField
+                            required
                             id="inquiry"
                             label="Inquiry"
                             value={this.state.inquiry}
@@ -89,7 +112,21 @@ class ContactForm extends React.Component {
                         />
                     </div>
                     <div className="contact-form-row">
-                        <Button variant="extendedFab" color="primary" className={this.props.classes.button}>
+                        <Button
+                            variant="extendedFab"
+                            color="primary"
+                            className={this.props.classes.button}
+                            onClick={() => {
+                                sendEmail({ email: this.state.email, name: this.state.name, inquiry: this.state.inquiry, phone: this.state.name })
+                                this.setState({
+                                    email: '',
+                                    name: '',
+                                    inquiry: '',
+                                    phone: '',
+                                });
+                            }}
+                            disabled={!this.isFormComplete()}
+                        >
                             <SendIcon className={this.props.classes.extendedIcon} />
                             Send
                         </Button>
@@ -106,6 +143,8 @@ class ContactForm extends React.Component {
             </div>
         );
     }
+
+    isFormComplete = () => this.state.email && this.state.name && this.state.inquiry;
 }
 
 export default withStyles(styles)(ContactForm);
