@@ -113,7 +113,7 @@ class Header extends React.Component {
                         <div>
                             <Button color="inherit" onClick={() => { this.redirect('/') }}>Home</Button>
                             <Button color="inherit" onClick={() => { this.redirect('/inquiry') }}>Contact</Button>
-                            <Button color="inherit">Resume</Button>
+                            { /* <Button color="inherit">Resume</Button> */}
                         </div>
                     </Toolbar>
 

@@ -32,7 +32,8 @@ NumberFormatCustom.propTypes = {
 
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
-
+  console.log(props);
+  console.log(inputRef)
   return (
     <MaskedInput
       {...other}

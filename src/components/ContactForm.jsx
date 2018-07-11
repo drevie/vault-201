@@ -35,7 +35,7 @@ const styles = theme => ({
 class ContactForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: '', email: '', phone: '', inquiry: '', textMask: '(1  )    -    ' }
+        this.state = { name: '', email: '', inquiry: '', phone: '(1  )    -    ' }
     }
 
     handleChange = name => event => {
@@ -90,7 +90,7 @@ class ContactForm extends React.Component {
                         <FormControl className={this.props.classes.textField} margin="normal">
                             <InputLabel>Phone</InputLabel>
                             <Input
-                                value={this.state.textMask}
+                                value={this.state.phone}
                                 onChange={this.handleChange('phone')}
                                 id="phone-number"
                                 inputComponent={TextMaskCustom}
@@ -122,8 +122,9 @@ class ContactForm extends React.Component {
                                     email: '',
                                     name: '',
                                     inquiry: '',
-                                    phone: '',
-                                });
+                                    phone: '(1  )    -    ',
+                                    openSuccessDialog: true,
+                                })
                             }}
                             disabled={!this.isFormComplete()}
                         >
