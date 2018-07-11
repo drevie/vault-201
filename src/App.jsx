@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import './styles/App.scss';
 import Header from './components/Header';
 import Body from './components/Body';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Switch, Route } from 'react-router-dom'
 import ContactForm from './components/ContactForm';
-import primary from '@material-ui/core/colors/'
 import Resume from './components/Resume';
 
 

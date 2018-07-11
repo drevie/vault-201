@@ -1,6 +1,5 @@
 import React from 'react';
-import { Avatar, AppBar, Toolbar, Drawer, Button, IconButton, ToolbarGroup } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Avatar, AppBar, Toolbar, Drawer, Button, IconButton, } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import PhoneIcon from '@material-ui/icons/Phone';
 import logo from '../static/images/my_picture.jpg';

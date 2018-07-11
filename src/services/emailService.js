@@ -6,7 +6,15 @@ export const sendEmail = (options = {}) => {
     'Content-Type': 'application/json; charset=UTF-8',
   }
   return new Promise((resolve, reject) => {
-    fetch(`${SERVICE_CONTEXT}?email=${options.email}&name=${options.name}&inquiry=${options.inquiry}phone=${options.phone}`)
+    fetch(`${SERVICE_CONTEXT}?email=${options.email}&name=${options.name}&inquiry=${options.inquiry}phone=${options.phone}`, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers,
+        redirect: 'follow',
+        referrer: 'no-refferer'
+      })
       .then(() => resolve(true))
       .catch(() => resolve(false));
   })

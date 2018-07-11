@@ -32,12 +32,13 @@ NumberFormatCustom.propTypes = {
 
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
-  console.log(props);
-  console.log(inputRef)
+  console.log(props.value);
   return (
     <MaskedInput
       {...other}
-      ref={inputRef}
+      defaultValue={'() -    '}
+      value={props.value}
+      ref={maskInput => (this.maskInput = maskInput)}
       mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
       placeholderChar={'\u2000'}
       showMask

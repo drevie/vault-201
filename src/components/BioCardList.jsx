@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button';
 import * as bios from '../static/text';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
-import * as FontAwesome from 'react-icons/lib/fa'
 
 const styles = theme => ({
     media: {
