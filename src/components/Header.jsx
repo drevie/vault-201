@@ -38,6 +38,7 @@ class Header extends React.Component {
                     renderHome: true,
                     renderInquiry: false,
                     renderAppDrawer: false,
+                    renderResume: false,
                 });
                 break;
             case '/inquiry':
@@ -45,6 +46,16 @@ class Header extends React.Component {
                     renderHome: false,
                     renderInquiry: true,
                     renderAppDrawer: false,
+                    renderResume: false,
+                });
+                break;
+
+            case '/resume':
+                this.setState({
+                    renderHome: false,
+                    renderAppDrawer: false,
+                    renderInquiry: false,
+                    renderResume: true,
                 });
                 break;
             default:
@@ -54,9 +65,11 @@ class Header extends React.Component {
 
     renderRedirect = () => {
         if (this.state.renderHome) {
-            return <Redirect to="/" />
+            return (<Redirect to="/" />);
         } else if (this.state.renderInquiry) {
-            return <Redirect to="/inquiry" />
+            return (<Redirect to="/inquiry" />);
+        } else if (this.state.renderResume) {
+            return (<Redirect to="/resume" />);
         }
     }
 
@@ -110,9 +123,9 @@ class Header extends React.Component {
                         */
                         }
                         <div>
-                            <Button color="inherit" onClick={() => { this.redirect('/') }}>Home</Button>
-                            <Button color="inherit" onClick={() => { this.redirect('/inquiry') }}>Contact</Button>
-                            { /* <Button color="inherit">Resume</Button> */}
+                            <Button color="inherit" onClick={() => { this.redirect('/'); }}>Home</Button>
+                            <Button color="inherit" onClick={() => { this.redirect('/inquiry'); }}>Contact</Button>
+                            <Button color="inherit" onClick={() => { this.redirect('/resume'); }}>Resume</Button>
                         </div>
                     </Toolbar>
 

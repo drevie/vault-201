@@ -1,0 +1,13 @@
+.resume {
+  .resume-container {
+    display: flex;
+    justify-content: center;
+  }
+  .page-number {
+    display: flex;
+    justify-content: flex-end;
+    p {
+      padding-right: 10%;
+    }
+  }
+}

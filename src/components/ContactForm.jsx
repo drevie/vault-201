@@ -3,6 +3,7 @@ import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentTex
 import { withStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 import { sendEmail } from '../services/emailService';
+import { Redirect } from 'react-router-dom'
 
 const styles = theme => ({
     container: {
@@ -51,11 +52,20 @@ class ContactForm extends React.Component {
         >
             <DialogTitle id="Contact Success Title">Thanks for getting in touch!</DialogTitle>
             <DialogContent>
-                <DialogContentText>A member monitoring our email will get back to you soon.</DialogContentText>
+                <DialogContentText>I will respond as soon as humanly possible :D.</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => null}>Home</Button>
-                <Button onClick={() => null}>Close</Button>
+                <Button onClick={() => {
+                    this.setState({
+                        openSuccessDialog: false,
+                        renderHome: true,
+                    })
+                }}>Home</Button>
+                <Button onClick={() => {
+                    this.setState({
+                        openSuccessDialog: false,
+                    })
+                }}>Close</Button>
             </DialogActions>
         </Dialog>
     );
@@ -134,10 +144,18 @@ class ContactForm extends React.Component {
         </div>
     );
 
+    renderRedirect = () => {
+        if (this.state.renderHome) {
+            return <Redirect to="/" />
+        }
+    }
+
     render() {
         return (
             <div>
                 {this.renderForm()}
+                {this.renderSuccessDialog()}
+                {this.renderRedirect()}
             </div>
         );
     }
